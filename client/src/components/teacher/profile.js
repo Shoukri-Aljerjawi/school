@@ -2,12 +2,10 @@ import React from 'react';
 
 export default function DashBord() {
   // const currentUser = JSON.parse(localStorage.getItem('userLogin'));
- 
 
   return (
     <>
-       
-      {/* {currentUser.fullName ? (
+      {currentUser.fullName ? (
         <section id="main-content">
           <section class="wrapper ">
             <div class="row">
@@ -40,8 +38,9 @@ export default function DashBord() {
             </div>
           </section>
         </section>
-      ) : <div></div>} */}
-      <div>Welcome</div>
+      ) : (
+        <div></div>
+      )}
     </>
   );
 }

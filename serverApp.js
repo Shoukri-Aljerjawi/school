@@ -35,7 +35,7 @@ app.get('*', (req, res) => {
 //conection dataBase and server
 mongoose
   .connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(console.log('connected to MongoDB', db))
+  .then(console.log('connected to MongoDB'))
   .catch((err) => console.log(err));
 
 app.listen(port, () => {
