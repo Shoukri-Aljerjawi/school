@@ -6,7 +6,7 @@ const PrivateRoute = ({ component: Component, roler, ...rest }) => (
     {...rest}
     render={(props) => {
       const currentUser = JSON.parse(localStorage.getItem('userLogin'));
-      console.log(currentUser);
+      
       if (currentUser && currentUser.roler === roler) {
         return <Component {...props} />;
       } else {
