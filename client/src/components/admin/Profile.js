@@ -5,7 +5,7 @@ export default function DashBord() {
 
   return (
     <>
-      {currentUser.fullName ? (
+      {/* {currentUser.fullName ? (
         <section id="main-content">
           <section class="wrapper ">
             <div class="row">
@@ -38,9 +38,8 @@ export default function DashBord() {
             </div>
           </section>
         </section>
-      ) : (
-        <div></div>
-      )}
+      ) : null} */}
+      <div>welcome</div>
     </>
   );
 }
