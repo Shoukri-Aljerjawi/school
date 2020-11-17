@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
 export default function Techers() {
+  const currentTeacher = JSON.parse(localStorage.getItem('userLogin'));
+
   const [dataDisplay, setDataDisplay] = useState({
     students: null,
     courses: null,
@@ -11,6 +13,7 @@ export default function Techers() {
     idCourse: '',
     nameCourse: '',
   });
+  const [showMessage, setShowMessage] = useState();
 
   const [data, setData] = useState();
   const currentUser = JSON.parse(localStorage.getItem('userLogin'));
@@ -56,6 +59,11 @@ export default function Techers() {
         console.log(err);
       });
     sendEmail();
+    setShowMessage(
+      <div className="alert alert-success" role="alert">
+        The grades for the course is added
+      </div>
+    );
   };
 
   //function to send Email to students
@@ -67,16 +75,16 @@ export default function Techers() {
           from: "'your mail-id'",
           to: student.email,
           subject: `Course ${course.nameCourse} grade has been added`,
-          html: `<h2> Hi  ${student.fullName} <br /> The "${
+          html: `<p> Hi  ${student.fullName} <br /> The "${
             course.nameCourse
           }" course grade has been added and you have got ${
             data[student._id]
-          } <br />  </h2><br>`,
+          } <br /> Regards <br/>  ${currentTeacher.fullName} </p> <br/>`,
         };
 
         emailData.push(obj);
       }
-      
+
       return obj;
     });
     axios.post('/sendEmail', emailData).then(() => {
@@ -89,6 +97,7 @@ export default function Techers() {
       <section className="techerTable">
         <div className="row">
           <div className="col-sm-12">
+            {showMessage}
             <div className="content-panel">
               <h4>Student</h4>
               <input

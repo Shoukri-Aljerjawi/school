@@ -1,4 +1,7 @@
 const mailer = require('nodemailer');
+
+require('dotenv').config();
+
 const transporter = mailer.createTransport({
   service: 'gmail',
   auth: {
@@ -19,6 +22,7 @@ exports.sendEmail = (req, res) => {
     transporter.sendMail(message, (err, result) => {
       if (err) {
         console.log(err);
+        console.log(process.env.USER_EMAIL);
         return false;
       }
       console.log(result);

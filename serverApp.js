@@ -16,7 +16,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 5001;
 //Database link connection
 const db = process.env.DB_HOST;
 
