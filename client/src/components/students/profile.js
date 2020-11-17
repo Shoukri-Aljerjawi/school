@@ -5,7 +5,7 @@ export default function DashBord() {
 
   return (
     <>
-      {currentUser ? (
+      {currentUser.fullName ? (
         <section id="main-content">
           <section class="wrapper ">
             <div class="row">
