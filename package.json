@@ -21,8 +21,8 @@
     "client-install": " cd client npm install --prefix client",
     "start": "node serverApp.js",
     "server": "nodemon server.js",
-    "client": "cd client npm start --prefix client",
-    "heroku-postbuild": "cd client  npm run build"
+    "client": "cd client npm start ",
+    "heroku-postbuild": "npm install && cd client  npm run build"
     
      
   },
