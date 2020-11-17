@@ -1,6 +1,8 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const path = require('path');
+
 require('dotenv').config();
 
 //import server routers
@@ -24,8 +26,10 @@ app.use(coursesRouters);
 app.use(gradesRouters);
 app.use(sendEmail);
 
-app.use('/', (req, res, next) => {
-  res.send('Hellow from server');
+app.use(express.static(path.join(__dirname, 'client/build')));
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname + '/client/build/index.html'));
 });
 
 //conection dataBase and server
